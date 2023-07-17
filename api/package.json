@@ -1,0 +1,24 @@
+{
+	"name": "canchitasapp",
+	"version": "1.0.0",
+	"description": "aplicacion para gestion y alquileres de canchas",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "babel-node index.js",
+		"dev": "nodemon --exec babel-node index.js"
+	},
+	"keywords": [],
+	"author": "Walter Conticello",
+	"license": "ISC",
+	"dependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"mongoose": "^7.3.3",
+		"morgan": "^1.10.0",
+		"nodemon": "^3.0.1"
+	}
+}
