@@ -5,7 +5,7 @@ import cors from "cors";
 import morgan from "morgan";
 import authRoute from "./routes/auth.js"
 import usersRoute from "./routes/users.js"
-import canchasRoute from "./routes/canchas.js"
+import complejosRoute from "./routes/complejos.js"
 import productosRoute from "./routes/productos.js"
 
 const app = express()
@@ -15,8 +15,8 @@ const connect = async (req, res) => {
 	try {
 		await mongoose.connect(process.env.MONGO)
 		console.log("Conectado a la base de datos")
-	} catch (error) {
-		throw error
+	} catch (err) {
+		throw err
 	}
 }
 
@@ -39,8 +39,20 @@ app.use(cors());
 
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
-app.use("/api/canchas", canchasRoute)
+app.use("/api/complejos", complejosRoute)
 app.use("/api/productos", productosRoute)
+
+app.use((err, req, res, next) => {
+	const errorStatus = err.status || 500
+	const errorMessage = err.message || "Algo esta mal"
+	return res.status(500).json({
+		success: false,
+		status: errorStatus,
+		message: errorMessage,
+		stack: err.stack,
+	});
+})
+
 
 
 

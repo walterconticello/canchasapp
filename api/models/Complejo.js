@@ -1,11 +1,7 @@
 import mongoose from 'mongoose';
 
-const CanchaSchema = new mongoose.Schema({
+const ComplejoSchema = new mongoose.Schema({
 	nombre: {
-		type: String,
-		required: true,
-	},
-	tipo: {
 		type: String,
 		required: true,
 	},
@@ -24,18 +20,10 @@ const CanchaSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	horarios: {
-		type: [String],
-		required: true,
-	},
-	precio: {
-		type: Number,
-		required: true,
-	},
 	recomendados: {
 		type: Boolean,
 		default: false,
 	},
 });
 
-export default mongoose.model("Canchas", CanchaSchema)
+export default mongoose.model("Complejo", ComplejoSchema)
