@@ -7,6 +7,8 @@ import authRoute from "./routes/auth.js"
 import usersRoute from "./routes/users.js"
 import complejosRoute from "./routes/complejos.js"
 import productosRoute from "./routes/productos.js"
+import canchasRoute from "./routes/canchas.js"
+import cookieParser from "cookie-parser";
 
 const app = express()
 dotenv.config()
@@ -32,6 +34,7 @@ app.listen(8800, () => {
 
 
 //Middleware
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
@@ -41,6 +44,7 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/complejos", complejosRoute)
 app.use("/api/productos", productosRoute)
+app.use("/api/canchas", canchasRoute)
 
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || 500
