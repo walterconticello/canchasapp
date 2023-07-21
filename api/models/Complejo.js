@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ComplejoSchema = new mongoose.Schema({
+const esquemaComplejo = new mongoose.Schema({
 	nombre: {
 		type: String,
 		required: true,
@@ -9,10 +9,8 @@ const ComplejoSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	fotos: {
-		type: [String],
-	},
-	desc: {
+	fotos: [String],
+	descripcion: {
 		type: String,
 		required: true,
 	},
@@ -20,10 +18,13 @@ const ComplejoSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	recomendados: {
+	esRecomendado: {
 		type: Boolean,
 		default: false,
 	},
+	canchas: [String]
 });
 
-export default mongoose.model("Complejo", ComplejoSchema)
+const Complejo = mongoose.model('Complejo', esquemaComplejo);
+
+export default Complejo;
