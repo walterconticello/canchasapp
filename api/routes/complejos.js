@@ -1,20 +1,21 @@
 import express from 'express';
 import { createComplejo, deleteComplejo, getComplejo, getComplejos, updateComplejo } from '../controllers/complejo.js';
+import { verifyAdmin } from '../utils/verifyToken.js';
 
 
 const router = express.Router();
 
 //CREATE
 
-router.post("/", createComplejo)
+router.post("/", verifyAdmin, createComplejo)
 
 //UPDATE
 
-router.put("/:id", updateComplejo)
+router.put("/:id", verifyAdmin, updateComplejo)
 
 //DELETE
 
-router.delete("/:id", deleteComplejo)
+router.delete("/:id", verifyAdmin, deleteComplejo)
 
 //GET
 
